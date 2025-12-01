@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Pescador - Confirmações e Alertas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+
+        body {
+            background-color: #1a2c3a;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232a4359' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            background-color: #2a4359;
+            border: 8px solid #3a5a7a;
+            box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar {
+            flex: 0 0 300px;
+            background-color: #1e3a4e;
+            color: #c8d6e5;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            border-right: 4px solid #3a5a7a;
+        }
+
+        .sidebar h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #c8d6e5;
+            text-shadow: 2px 2px 0px #1a2c3a;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3a5a7a;
+        }
+
+        .user-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #3a5a7a;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border: 3px solid #5a7a9a;
+        }
+
+        .user-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .user-id {
+            font-size: 0.9rem;
+            color: #8fa8c5;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .nav-menu li {
+            margin-bottom: 10px;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 12px 15px;
+            color: #c8d6e5;
+            text-decoration: none;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            background-color: #2a4359;
+            border: 2px solid #5a7a9a;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background-color: #3a5a7a;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #5a7a9a;
+        }
+
+        .content-header h2 {
+            color: #c8d6e5;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 0px #1a2c3a;
+        }
+
+        .alert-section, .confirmation-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #c8d6e5;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #5a7a9a;
+        }
+
+        .alert-card, .confirmation-card {
+            background-color: #2a4359;
+            border: 3px solid #5a7a9a;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .alert-card:hover, .confirmation-card:hover {
+            border-color: #7a9aba;
+            transform: translateY(-2px);
+        }
+
+        .alert-header, .confirmation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .alert-title, .confirmation-title {
+            font-size: 1.2rem;
+            color: #c8d6e5;
+            font-weight: bold;
+        }
+
+        .alert-date, .confirmation-date {
+            font-size: 0.9rem;
+            color: #8fa8c5;
+        }
+
+        .alert-content, .confirmation-content {
+            color: #c8d6e5;
+            line-height: 1.5;
+        }
+
+        .alert-type {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .weather-alert {
+            background-color: #4a6a8a;
+            color: #c8d6e5;
+        }
+
+        .regulation-alert {
+            background-color: #8a6a4a;
+            color: #c8d6e5;
+        }
+
+        .species-alert {
+            background-color: #6a4a8a;
+            color: #c8d6e5;
+        }
+
+        .confirmation-status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .status-approved {
+            background-color: #4a8a6a;
+            color: #c8d6e5;
+        }
+
+        .status-pending {
+            background-color: #8a8a4a;
+            color: #c8d6e5;
+        }
+
+        .status-rejected {
+            background-color: #8a4a4a;
+            color: #c8d6e5;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #4a6a8a;
+            color: #c8d6e5;
+            border: 2px solid #5a7a9a;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #3a5a7a;
+            border-color: #7a9aba;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                flex: 1;
+                border-right: none;
+                border-bottom: 4px solid #3a5a7a;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <h1>Painel do Pescador</h1>
+
+        <div class="user-info">
+            <div class="user-avatar">🎣</div>
+            <div class="user-name">João Silva</div>
+            <div class="user-id">Registro: PS-2023-04567</div>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="#" class="active">Alertas e Confirmações</a></li>
+            <li><a href="#">Registrar Nova Captura</a></li>
+            <li><a href="#">Histórico de Capturas</a></li>
+            <li><a href="#">Mapa de Áreas de Pesca</a></li>
+            <li><a href="#">Normativas e Regulamentos</a></li>
+            <li><a href="#">Perfil e Configurações</a></li>
+        </ul>
+
+        <div class="quick-actions">
+            <a href="/registrocapitura" class="btn">Registrar Captura</a>
+            <a href="#" class="btn">Consultar Regulamentos</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Alertas e Confirmações</h2>
+        </div>
+
+        <div class="alert-section">
+            <h3 class="section-title">Alertas Recentes</h3>
+
+            <div class="alert-card">
+                <div class="alert-header">
+                    <div class="alert-title">Alerta Meteorológico</div>
+                    <div class="alert-date">15/10/2023 08:30</div>
+                </div>
+                <div class="alert-content">
+                    Previsão de tempestade forte na região do Rio Paraná para os próximos 2 dias. Recomenda-se evitar atividades de pesca na área.
+                </div>
+                <span class="alert-type weather-alert">CLIMA</span>
+            </div>
+
+            <div class="alert-card">
+                <div class="alert-header">
+                    <div class="alert-title">Espécie Protegida Identificada</div>
+                    <div class="alert-date">14/10/2023 14:15</div>
+                </div>
+                <div class="alert-content">
+                    Sua última captura foi identificada como Surubim-do-Iguaçu (Steindachneridion melanodermatum), espécie ameaçada. Por favor, libere o exemplar se ainda estiver em suas posses.
+                </div>
+                <span class="alert-type species-alert">ESPÉCIE PROTEGIDA</span>
+            </div>
+
+            <div class="alert-card">
+                <div class="alert-header">
+                    <div class="alert-title">Atualização de Regulamento</div>
+                    <div class="alert-date">12/10/2023 10:45</div>
+                </div>
+                <div class="alert-content">
+                    Nova portaria estabelece período de defeso para a espécie Dourado de 01/11/2023 a 28/02/2024. A pesca desta espécie estará proibida neste período.
+                </div>
+                <span class="alert-type regulation-alert">REGULAMENTO</span>
+            </div>
+        </div>
+
+        <div class="confirmation-section">
+            <h3 class="section-title">Confirmações de Registro</h3>
+
+            <div class="confirmation-card">
+                <div class="confirmation-header">
+                    <div class="confirmation-title">Registro de Captura #04521</div>
+                    <div class="confirmation-date">13/10/2023 16:20</div>
+                </div>
+                <div class="confirmation-content">
+                    Seu registro de captura de Pintado (3.2kg) no Rio Paraná foi <strong>aprovado</strong> pelos órgãos regulamentadores. O registro está em conformidade com as normas vigentes.
+                </div>
+                <span class="confirmation-status status-approved">APROVADO</span>
+            </div>
+
+            <div class="confirmation-card">
+                <div class="confirmation-header">
+                    <div class="confirmation-title">Registro de Captura #04518</div>
+                    <div class="confirmation-date">10/10/2023 09:15</div>
+                </div>
+                <div class="confirmation-content">
+                    Seu registro de captura de Dourado (4.5kg) necessita de <strong>informações adicionais</strong>. Por favor, adicione foto da escala de medição para confirmar o comprimento.
+                </div>
+                <span class="confirmation-status status-pending">PENDENTE</span>
+                <a href="#" class="btn">Completar Registro</a>
+            </div>
+
+            <div class="confirmation-card">
+                <div class="confirmation-header">
+                    <div class="confirmation-title">Registro de Captura #04505</div>
+                    <div class="confirmation-date">05/10/2023 11:30</div>
+                </div>
+                <div class="confirmation-content">
+                    Seu registro foi <strong>rejeitado</strong> devido à identificação incorreta da espécie. O exemplar registrado como Corvina foi identificado como Pescada-amarela, que possui tamanho mínimo diferente.
+                </div>
+                <span class="confirmation-status status-rejected">REJEITADO</span>
+                <a href="#" class="btn">Corrigir Registro</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simular atualizações em tempo real
+    function simulateNewAlert() {
+        const alerts = [
+            {
+                title: "Alerta de Ventania",
+                content: "Ventos fortes previstos para amanhã na região do Lago de Itaipu. Cuidado ao navegar.",
+                type: "weather-alert",
+                typeText: "CLIMA"
+            },
+            {
+                title: "Área de Preservação",
+                content: "Nova área de preservação estabelecida no Rio Iguaçu. Verifique o mapa atualizado.",
+                type: "regulation-alert",
+                typeText: "REGULAMENTO"
+            }
+        ];
+
+        const randomAlert = alerts[Math.floor(Math.random() * alerts.length)];
+
+        // Criar novo elemento de alerta
+        const alertSection = document.querySelector('.alert-section');
+        const newAlert = document.createElement('div');
+        newAlert.className = 'alert-card';
+        newAlert.innerHTML = `
+            <div class="alert-header">
+                <div class="alert-title">${randomAlert.title}</div>
+                <div class="alert-date">Agora</div>
+            </div>
+            <div class="alert-content">${randomAlert.content}</div>
+            <span class="alert-type ${randomAlert.type}">${randomAlert.typeText}</span>
+        `;
+
+        // Adicionar no topo da seção
+        alertSection.insertBefore(newAlert, alertSection.querySelector('.alert-card'));
+
+        // Efeito visual de destaque
+        newAlert.style.backgroundColor = '#1e3a4e';
+        setTimeout(() => {
+            newAlert.style.backgroundColor = '#2a4359';
+        }, 1000);
+    }
+
+    // Simular nova confirmação
+    function simulateNewConfirmation() {
+        const confirmations = [
+            {
+                title: "Registro de Captura #04522",
+                content: "Seu registro de captura de Pacu (2.1kg) foi aprovado. Obrigado pela precisão nas informações.",
+                status: "status-approved",
+                statusText: "APROVADO"
+            }
+        ];
+
+        const randomConfirmation = confirmations[Math.floor(Math.random() * confirmations.length)];
+
+        // Criar novo elemento de confirmação
+        const confirmationSection = document.querySelector('.confirmation-section');
+        const newConfirmation = document.createElement('div');
+        newConfirmation.className = 'confirmation-card';
+        newConfirmation.innerHTML = `
+            <div class="confirmation-header">
+                <div class="confirmation-title">${randomConfirmation.title}</div>
+                <div class="confirmation-date">Agora</div>
+            </div>
+            <div class="confirmation-content">${randomConfirmation.content}</div>
+            <span class="confirmation-status ${randomConfirmation.status}">${randomConfirmation.statusText}</span>
+        `;
+
+        // Adicionar no topo da seção
+        confirmationSection.insertBefore(newConfirmation, confirmationSection.querySelector('.confirmation-card'));
+
+        // Efeito visual de destaque
+        newConfirmation.style.backgroundColor = '#1e3a4e';
+        setTimeout(() => {
+            newConfirmation.style.backgroundColor = '#2a4359';
+        }, 1000);
+    }
+
+    // Simular atualizações periódicas (a cada 30 segundos)
+    setInterval(() => {
+        if (Math.random() > 0.5) {
+            simulateNewAlert();
+        } else {
+            simulateNewConfirmation();
+        }
+    }, 30000);
+
+    // Adicionar interação aos cards
+    document.querySelectorAll('.alert-card, .confirmation-card').forEach(card => {
+        card.addEventListener('click', function() {
+            this.style.transform = 'scale(0.99)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+    });
+</script>
+</body>
+</html>
