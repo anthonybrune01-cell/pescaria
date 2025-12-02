@@ -14,6 +14,9 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
+    private TelasController telas;
+
+    @Autowired
     UsuarioService service;
 
     @PostMapping
@@ -28,9 +31,11 @@ public class UsuarioController {
             @RequestParam String senha) {
 
         boolean valido = service.login(email, senha);
+        telas.setMe(service.findByEmail(email));
+
 
         if (valido) {
-            return "redirect:/painelpescador";
+            return "redirect:/painelpescador?nome=" + telas.getMe().getNome();
         } else {
             return "redirect:/login?erro=true";
 

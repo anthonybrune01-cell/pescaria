@@ -268,14 +268,14 @@
 
         <div class="user-info">
             <div class="user-avatar">🎣</div>
-            <div class="user-name">João Silva</div>
+            <div class="user-name" th:text="${nome}">nome</div>
             <div class="user-id">Registro: PS-2023-04567</div>
         </div>
 
         <ul class="nav-menu">
             <li><a href="#" class="active">Alertas e Confirmações</a></li>
             <li><a href="#">Registrar Nova Captura</a></li>
-            <li><a href="#">Histórico de Capturas</a></li>
+            <li><a href="/historico-capturas">Histórico de Capturas</a></li>
             <li><a href="#">Mapa de Áreas de Pesca</a></li>
             <li><a href="#">Normativas e Regulamentos</a></li>
             <li><a href="#">Perfil e Configurações</a></li>

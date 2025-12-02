@@ -21,4 +21,7 @@ public class CapturaService {
         return repository.save(captura);
     }
 
+    public void deletar (Long id){
+        repository.deleteById(id);
+    }
 }
