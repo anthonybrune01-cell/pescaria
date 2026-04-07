@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Mapa de Áreas de Pesca</title>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <style>
+
+        body{
+        margin:0;
+        font-family:Arial;
+        }
+
+        h1{
+        text-align:center;
+        padding:10px;
+        }
+
+        #map{
+        height:600px;
+        width:100%;
+        }
+
+        .legend{
+        position:absolute;
+        bottom:20px;
+        left:20px;
+        background:white;
+        padding:10px;
+        border-radius:5px;
+        box-shadow:0 0 10px rgba(0,0,0,0.2);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Mapa de Áreas de Pesca</h1>
+
+<div id="map"></div>
+
+<div class="legend">
+    <b>Legenda</b><br>
+    <span style="color:red">⬤</span> Área proibida<br>
+    <span style="color:green">⬤</span> Área permitida<br>
+    <span style="color:blue">⬤</span> Captura registrada
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+    // cria o mapa
+    var map = L.map('map').setView([-16.6869, -49.2648], 8);
+
+    // mapa base
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    maxZoom:19
+    }).addTo(map);
+
+
+
+    // ======================
+    // AREA PROIBIDA
+    // ======================
+
+    var areaProibida = [
+    [-16.70, -49.30],
+    [-16.65, -49.25],
+    [-16.60, -49.30],
+    [-16.65, -49.35]
+    ];
+
+    L.polygon(areaProibida,{
+    color:'red',
+    fillColor:'#ff4d4d',
+    fillOpacity:0.5
+    })
+    .addTo(map)
+    .bindPopup("🚫 Área de pesca PROIBIDA");
+
+
+
+    // ======================
+    // AREA PERMITIDA
+    // ======================
+
+    var areaPermitida = [
+    [-16.80, -49.20],
+    [-16.75, -49.15],
+    [-16.70, -49.20],
+    [-16.75, -49.25]
+    ];
+
+    L.polygon(areaPermitida,{
+    color:'green',
+    fillColor:'#3cb371',
+    fillOpacity:0.5
+    })
+    .addTo(map)
+    .bindPopup("✅ Área de pesca PERMITIDA");
+
+
+
+    // ======================
+    // CAPTURAS
+    // ======================
+
+    var capturas = [
+    {
+    lat:-16.68,
+    lon:-49.26,
+    especie:"Dourado",
+    peso:"4.5kg"
+    },
+
+    {
+    lat:-16.73,
+    lon:-49.22,
+    especie:"Pintado",
+    peso:"3.2kg"
+    },
+
+    {
+    lat:-16.66,
+    lon:-49.28,
+    especie:"Pacu",
+    peso:"2.1kg"
+    }
+    ];
+
+    capturas.forEach(function(c){
+
+    L.marker([c.lat,c.lon])
+    .addTo(map)
+    .bindPopup(
+    "<b>🎣 Captura registrada</b><br>"+
+    "Espécie: "+c.especie+"<br>"+
+    "Peso: "+c.peso
+    );
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -4,263 +4,257 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Captura - Pescador</title>
+
     <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Georgia', serif;
-}
 
-body {
-    background-color: #1a2c3a;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232a4359' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
+        *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: 'Inter', sans-serif;
+        }
 
-/* Container principal */
-.container {
-    display: flex;
-    max-width: 1100px;
-    width: 100%;
-    background-color: #2a4359;
-    border: 8px solid #3a5a7a;
-    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
-}
 
-/* Área de informações à esquerda */
-.info-section {
-    flex: 1;
-    background-color: #1e3a4e;
-    color: #c8d6e5;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-right: 4px solid #3a5a7a;
-}
+        body{
+        background-color:white;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:100vh;
+        padding:20px;
+        }
 
-.info-section h1 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    color: #c8d6e5;
-    text-shadow: 2px 2px 0px #1a2c3a;
-    letter-spacing: 1px;
-}
 
-.fish-icon {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 4rem;
-}
+        .container{
+        display:flex;
+        max-width:1100px;
+        width:100%;
+        background-color:#1351B4;
+        border:6px solid #083D77;
 
-.brand {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 2px solid #5a7a9a;
-}
+        border-radius:18px;
+        box-shadow:0 15px 40px rgba(0,0,0,0.25);
+        overflow:hidden;
+        }
 
-.brand h2 {
-    color: #c8d6e5;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-}
 
-/* Área do formulário */
-.form-section {
-    flex: 1;
-    padding: 40px;
-    background-color: #3a5a7a;
-}
+        .info-section{
+        flex:1;
+        background-color:#083D77;
+        color:white;
+        padding:40px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        border-right:4px solid #0B3A8A;
+        }
 
-.form-title {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #c8d6e5;
-    font-size: 1.8rem;
-    text-shadow: 2px 2px 0px #1a2c3a;
-}
+        .info-section h1{
+        font-size:2.2rem;
+        margin-bottom:20px;
+        color:white;
+        letter-spacing:1px;
+        }
 
-label {
-    color: #c8d6e5;
-    font-weight: 600;
-    font-size: 1.1rem;
-    display: block;
-    margin: 12px 0 8px;
-}
+        .fish-icon{
+        text-align:center;
+        margin:20px 0;
+        font-size:4rem;
+        }
 
-input, select, textarea {
-    width: 100%;
-    padding: 14px;
-    border: 3px solid #5a7a9a;
-    background-color: #2a4359;
-    color: #c8d6e5;
-    font-size: 1rem;
-    transition: all 0.3s;
-    margin-bottom: 12px;
-}
+        .brand{
+        text-align:center;
+        margin-top:30px;
+        padding-top:20px;
+        border-top:2px solid #2f5fb8;
+        }
 
-input:focus, select:focus, textarea:focus {
-    border-color: #7a9aba;
-    outline: none;
-    background-color: #1e3a4e;
-}
+        .brand h2{
+        color:white;
+        font-size:1.8rem;
+        letter-spacing:2px;
+        }
 
-textarea {
-    resize: none;
-}
+        .form-section{
+        flex:1;
+        padding:40px;
+        background-color:#f4f6fa;
+        }
 
-/* Botão */
-button {
-    width: 100%;
-    padding: 14px;
-    background-color: #4a6a8a;
-    color: #c8d6e5;
-    border: 3px solid #5a7a9a;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 10px;
-}
+        .form-title{
+        text-align:center;
+        margin-bottom:30px;
+        color:#083D77;
+        font-size:1.8rem;
+        }
 
-button:hover {
-    background-color: #2a4359;
-    border-color: #7a9aba;
-}
+        label{
+        color:#083D77;
+        font-weight:600;
+        font-size:1.05rem;
+        display:block;
+        margin:12px 0 8px;
+        }
 
-/* Responsivo */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        border-width: 5px;
-    }
-    .info-section {
-        border-right: none;
-        border-bottom: 4px solid #3a5a7a;
-    }
-}
+
+        input,select,textarea{
+        width:100%;
+        padding:12px;
+        border:2px solid #1351B4;
+        background-color:white;
+        color:#333;
+        font-size:1rem;
+        margin-bottom:12px;
+        border-radius:8px;
+        transition:0.2s;
+        }
+
+        input:focus,select:focus,textarea:focus{
+        outline:none;
+        border-color:#0B3A8A;
+        box-shadow:0 0 6px rgba(19,81,180,0.3);
+        }
+
+        textarea{
+        resize:none;
+        }
+
+
+        button{
+        width:100%;
+        padding:14px;
+        background-color:#FFCD07;
+        color:black;
+        border:none;
+        font-size:1.1rem;
+        font-weight:600;
+        cursor:pointer;
+        border-radius:10px;
+        transition:0.2s;
+        text-transform:uppercase;
+        }
+
+        button:hover{
+        background-color:#e6b800;
+        }
+
+
+        @media (max-width:768px){
+
+        .container{
+        flex-direction:column;
+        }
+
+        .info-section{
+        border-right:none;
+        border-bottom:4px solid #0B3A8A;
+        }
+
+        }
 
     </style>
 </head>
+
+<script>
+    function trocarImagem() {
+        const select = document.getElementById("especie");
+        const imagem = document.getElementById("imagemPeixe");
+
+        const especieTexto = select.options[select.selectedIndex].text.toLowerCase();
+
+        const imagens = {
+            "tilápia": "/imagens/tilapia.jpg",
+            "tucunaré": "/imagens/tucunare.jpg",
+            "piau": "/imagens/piau.jpg"
+        };
+
+        imagem.src = imagens[especieTexto] || "/imagens/default.png";
+    }
+</script>
+
 <body>
+
 <div class="container">
+
     <div class="info-section">
+
         <h1>Registro de Captura</h1>
-        <p></p>
-        <p></p>
 
         <div class="fish-icon">🐟</div>
-
-        <p></p>
-        <p></p>
 
         <div class="brand">
             <h2>DIÁRIO DO PESCADOR</h2>
         </div>
+
     </div>
 
     <div class="form-section">
-        <div class="form-container">
-            <h2 class="form-title">Registrar Nova Captura</h2>
 
-            <form th:action="@{/capturas/salvar}" method="post">
+        <h2 class="form-title">Registrar Nova Captura</h2>
 
-                <input type="hidden" name="pescariaId" value="1"/>
+        <form th:action="@{/capturas/salvar}" method="post">
 
-                <label for="fish-species">Espécie do Peixe:</label>
-                <select id="fish-species" name="especieId" required>
-                    <option value="" disabled selected>Selecione uma espécie</option>
-                    <option th:each="esp : ${especies}"
-                            th:value="${esp.id}"
-                            th:text="${esp.nomeComum}">
-                    </option>
-                </select>
+            <input type="hidden" name="pescariaId" value="1"/>
 
-                <label>Peso Total (kg):</label>
-                <input type="number" name="pesoTotal" step="0.1" required/>
+            <label>Espécie do Peixe:</label>
+            <select id="especie" name="especieId" required onchange="trocarImagem()">
+                <option value="" disabled selected>Selecione uma espécie</option>
 
-                <label>Tamanho Médio (cm):</label>
-                <input type="number" name="tamanhoMedio" required/>
+                <option th:each="esp : ${especies}"
+                        th:value="${esp.id}"
+                        th:text="${esp.nomeComum}">
+                </option>
+            </select>
 
-                <label>Quantidade:</label>
-                <input type="number" name="quantidade" required/>
+            <!-- IMAGEM DO PEIXE -->
+            <img id="imagemPeixe" src="/imagens/default.png"
+                 style="width:100%; max-height:200px; object-fit:contain; margin-bottom:15px; border-radius:10px;">
 
-                <label>Local da Captura:</label>
-                <input type="text" name="local" required/>
+            <label>Peso Total (kg):</label>
+            <input type="number" name="pesoTotal" step="0.1" required/>
 
-                <label>Data da Captura:</label>
-                <input type="date" name="data" required th:value="${dataAtual}"/>
+            <label>Tamanho Médio (cm):</label>
+            <input type="number" name="tamanhoMedio" required/>
 
-                <label>Hora da Captura:</label>
-                <input type="time" name="hora" required/>
+            <label>Quantidade:</label>
+            <input type="number" name="quantidade" required/>
 
-                <label>Método de Pesca:</label>
-                <select name="metodo" required>
-                    <option value="rede">Rede</option>
-                    <option value="linha">Linha</option>
-                    <option value="vara">Vara</option>
-                    <option value="anzol">Anzol</option>
-                </select>
+            <label>Local da Captura:</label>
+            <input type="text" name="local" required/>
 
-                <label>Isca Utilizada:</label>
-                <input type="text" name="isca" required/>
+            <label>Data da Captura:</label>
+            <input type="date" name="data" required th:value="${dataAtual}"/>
 
-                <label>Peixe Solto:</label>
-                <select name="soltura" required>
-                    <option value="true">Sim</option>
-                    <option value="false">Não</option>
-                </select>
+            <label>Hora da Captura:</label>
+            <input type="time" name="hora" required/>
 
-                <label>Observações:</label>
-                <textarea name="observacoes"></textarea>
+            <label>Método de Pesca:</label>
+            <select name="metodo" required>
+                <option value="rede">Rede</option>
+                <option value="linha">Linha</option>
+                <option value="vara">Vara</option>
+                <option value="anzol">Anzol</option>
+            </select>
 
-                <button type="submit">Salvar Captura</button>
-            </form>
+            <label>Isca Utilizada:</label>
+            <input type="text" name="isca" required/>
 
-        </div>
+            <label>Peixe Solto:</label>
+            <select name="soltura" required>
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+            </select>
+
+            <label>Observações:</label>
+            <textarea name="observacoes"></textarea>
+
+            <button type="submit">Salvar Captura</button>
+
+        </form>
+
     </div>
+
 </div>
 
-<script>
-    // Definir data atual como padrão
-    document.getElementById('capture-date').valueAsDate = new Date();
-
-    // Adicionar ação para o formulário de captura
-    document.getElementById('capture-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Coletar dados do formulário
-        const species = document.getElementById('fish-species').value;
-        const weight = document.getElementById('fish-weight').value;
-        const length = document.getElementById('fish-length').value;
-        const location = document.getElementById('capture-location').value;
-        const date = document.getElementById('capture-date').value;
-        const time = document.getElementById('capture-time').value;
-        const method = document.getElementById('fishing-method').value;
-        const bait = document.getElementById('bait-used').value;
-        const notes = document.getElementById('capture-notes').value;
-
-        // Aqui você normalmente enviaria os dados para o servidor
-        alert(`Captura registrada com sucesso!\n\nEspécie: ${species}\nPeso: ${weight} kg\nComprimento: ${length} cm\nLocal: ${location}\nData: ${date} às ${time}\nMétodo: ${method}\nIsca: ${bait}`);
-
-        // Limpar formulário após envio
-        this.reset();
-        document.getElementById('capture-date').valueAsDate = new Date();
-    });
-
-    // Simular upload de imagem
-    document.querySelector('.placeholder').addEventListener('click', function() {
-        this.innerHTML = 'Imagem adicionada (simulação)';
-        this.style.color = '#c8d6e5';
-    });
-</script>
 </body>
 </html>

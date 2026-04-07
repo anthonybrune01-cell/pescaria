@@ -3,214 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Rústico - Login/Cadastro</title>
+    <title>Portal da Pesca - Login/Cadastro</title>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Georgia', serif;
+        *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: 'Inter', sans-serif;
         }
 
-        body {
-            background-color: #29319d;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%233a2a23' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+        body{
+        background-color:#F4F8F6;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:100vh;
+        padding:20px;
         }
 
-        .container {
-            display: flex;
-            max-width: 1000px;
-            width: 100%;
-            background-color: #3a2a23;
-            border: 8px solid #5d4037;
-            box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
+        .container{
+        display:flex;
+        max-width:1000px;
+        width:100%;
+        background-color:#1351B4;
+        border-radius:15px;
         }
 
-        .welcome-section {
-            flex: 1;
-            background-color: #4e342e;
-            color: #d7ccc8;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-right: 4px solid #5d4037;
+        .welcome-section{
+        flex:1;
+        background-color:#1351B4;
+        color:white;
+        padding:40px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        border-right:4px solid #083D77;
+        border-radius:15px 0 0 15px;
         }
 
-        .welcome-section h1 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            color: #d7ccc8;
-            text-shadow: 2px 2px 0px #3e2723;
-            letter-spacing: 1px;
+        .welcome-section h1{
+        font-size:2.2rem;
+        margin-bottom:20px;
+        color:white;
+        letter-spacing:1px;
         }
 
-        .welcome-section p {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
+        .welcome-section p{
+        font-size:1rem;
+        line-height:1.6;
+        margin-bottom:15px;
         }
 
-        .form-section {
-            flex: 1;
-            padding: 40px;
-            background-color: #5d4037;
+        .form-section{
+        flex:1;
+        padding:40px;
+        background-color:#0B3A8A;
+        border-radius:0 15px 15px 0;
         }
 
-        .form-container {
-            width: 100%;
+        .tabs{
+        display:flex;
+        margin-bottom:30px;
+        border-bottom:3px solid #2f5fb8;
         }
 
-        .tabs {
-            display: flex;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #8d6e63;
+        .tab{
+        padding:12px 25px;
+        cursor:pointer;
+        font-weight:600;
+        color:#c9d8ff;
+        background-color:#083D77;
+        border:2px solid #2f5fb8;
+        border-bottom:none;
+        margin-right:5px;
+        transition:all 0.3s;
+        border-radius:8px 8px 0 0;
         }
 
-        .tab {
-            padding: 12px 25px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #bcaaa4;
-            background-color: #4e342e;
-            border: 2px solid #8d6e63;
-            border-bottom: none;
-            margin-right: 5px;
-            transition: all 0.3s;
+        .tab.active{
+        color:white;
+        background-color:#0B3A8A;
+        border:2px solid #2f5fb8;
+        border-bottom:2px solid #0B3A8A;
+        position:relative;
+        top:3px;
         }
 
-        .tab.active {
-            color: #d7ccc8;
-            background-color: #5d4037;
-            border: 2px solid #8d6e63;
-            border-bottom: 2px solid #5d4037;
-            position: relative;
-            top: 3px;
+        .form{
+        display:none;
         }
 
-        .form {
-            display: none;
+        .form.active{
+        display:block;
         }
 
-        .form.active {
-            display: block;
+        .form-group{
+        margin-bottom:25px;
         }
 
-        .form-group {
-            margin-bottom: 25px;
+        .form-group label{
+        display:block;
+        margin-bottom:10px;
+        font-weight:600;
+        color:white;
+        font-size:1.1rem;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: #d7ccc8;
-            font-size: 1.1rem;
+        .form-group input{
+        width:100%;
+        padding:14px;
+        border:3px solid #2f5fb8;
+        background-color:#083D77;
+        color:white;
+        font-size:1rem;
+        transition:all 0.3s;
+        border-radius:8px;
         }
 
-        .form-group input {
-            width: 100%;
-            padding: 14px;
-            border: 3px solid #8d6e63;
-            background-color: #4e342e;
-            color: #d7ccc8;
-            font-size: 1rem;
-            transition: all 0.3s;
+        .form-group input:focus{
+        border-color:#6fa3ff;
+        outline:none;
+        background-color:#0B3A8A;
         }
 
-        .form-group input:focus {
-            border-color: #a1887f;
-            outline: none;
-            background-color: #3e2723;
+        .form-group input::placeholder{
+        color:#9bb7ff;
         }
 
-        .form-group input::placeholder {
-            color: #8d6e63;
+        /* BOTÃO AMARELO */
+
+        .btn{
+        width:100%;
+        padding:14px;
+        background-color:#FFCD07;
+        color:black;
+        border:none;
+        font-size:1.1rem;
+        font-weight:600;
+        cursor:pointer;
+        transition:all 0.3s;
+        text-transform:uppercase;
+        letter-spacing:1px;
+        border-radius:10px;
         }
 
-        .btn {
-            width: 100%;
-            padding: 14px;
-            background-color: #6d4c41;
-            color: #d7ccc8;
-            border: 3px solid #8d6e63;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .btn:hover{
+        background-color:#e6b800;
         }
 
-        .btn:hover {
-            background-color: #5d4037;
-            border-color: #a1887f;
+        .brand{
+        text-align:center;
+        margin-top:30px;
+        padding-top:20px;
+        border-top:2px solid #2f5fb8;
         }
 
-        .forgot-password {
-            text-align: center;
-            margin-top: 20px;
+        .brand h2{
+        color:white;
+        font-size:1.8rem;
+        letter-spacing:2px;
         }
 
-        .forgot-password a {
-            color: #a1887f;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
+        @media (max-width:768px){
+
+        .container{
+        flex-direction:column;
+        border-width:5px;
         }
 
-        .forgot-password a:hover {
-            color: #d7ccc8;
-            text-decoration: underline;
+        .welcome-section{
+        padding:30px;
+        border-right:none;
+        border-bottom:4px solid #083D77;
+        border-radius:15px 15px 0 0;
         }
 
-        .brand {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #8d6e63;
+        .form-section{
+        padding:30px;
+        border-radius:0 0 15px 15px;
         }
 
-        .brand h2 {
-            color: #d7ccc8;
-            font-size: 1.8rem;
-            letter-spacing: 2px;
+        .tabs{
+        justify-content:center;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                border-width: 5px;
-            }
-
-            .welcome-section {
-                padding: 30px;
-                border-right: none;
-                border-bottom: 4px solid #5d4037;
-            }
-
-            .form-section {
-                padding: 30px;
-            }
-
-            .tabs {
-                justify-content: center;
-            }
         }
+
     </style>
 </head>
+
 <body>
+
 <div class="container">
+
     <div class="welcome-section">
         <h1>Bem-vindo a Pesca</h1>
         <p>Venha Pescar e Preservar</p>
-        <p></p>
-        <p></p>
 
         <div class="brand">
             <h2>PORTAL DA PESCA</h2>
@@ -218,13 +207,16 @@
     </div>
 
     <div class="form-section">
+
         <div class="form-container">
+
             <div class="tabs">
                 <div class="tab active" onclick="showForm('login')">Login</div>
                 <div class="tab" onclick="showForm('register')">Cadastro</div>
             </div>
 
             <form id="login-form" class="form active" th:action="@{/usuario/login}" method="post">
+
                 <div class="form-group">
                     <label for="login-email">E-mail</label>
                     <input type="text" id="login-email" name="email" required>
@@ -236,10 +228,11 @@
                 </div>
 
                 <button type="submit" class="btn">Entrar</button>
+
             </form>
 
-
             <form id="register-form" class="form" th:action="@{/usuario}" method="post">
+
                 <div class="form-group">
                     <label for="register-name">Nome Completo</label>
                     <input type="text" id="register-name" name="nome" required>
@@ -256,6 +249,7 @@
                 </div>
 
                 <button type="submit" class="btn">Criar Conta</button>
+
             </form>
 
         </div>
@@ -263,27 +257,24 @@
 </div>
 
 <script>
-    function showForm(formType) {
-        // Esconder todos os formulários
-        document.querySelectorAll('.form').forEach(form => {
-            form.classList.remove('active');
-        });
 
-        // Remover a classe active de todas as abas
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.classList.remove('active');
-        });
+    function showForm(formType){
 
-        // Mostrar o formulário selecionado
-        document.getElementById(formType + '-form').classList.add('active');
+    document.querySelectorAll('.form').forEach(form=>{
+    form.classList.remove('active');
+    });
 
-        // Ativar a aba selecionada
-        event.target.classList.add('active');
+    document.querySelectorAll('.tab').forEach(tab=>{
+    tab.classList.remove('active');
+    });
+
+    document.getElementById(formType + '-form').classList.add('active');
+
+    event.target.classList.add('active');
+
     }
 
-
-
-
 </script>
+
 </body>
 </html>

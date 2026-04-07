@@ -35,6 +35,14 @@ public class TelasController {
         return "painelpescador";
     }
 
+    @GetMapping("/perfil")
+    public String perfil(Model model) {
+
+        model.addAttribute("usuario", me);
+
+        return "perfil";
+    }
+
     @GetMapping(value = "registrocapitura")
     public String registrocapitura(Model model) {
         model.addAttribute("especies", List.of(
@@ -47,6 +55,7 @@ public class TelasController {
         return "registrocapitura";
     }
 
+
     @GetMapping("/historico-capturas")
     public String mostrarHistorico(Model model) {
 
@@ -55,6 +64,17 @@ public class TelasController {
 
         return "historicocapturas";
     }
+    @GetMapping("/mapa")
+    public String mapaAreas() {
+        return "mapaareas";
+    }
+    @GetMapping("/normativas")
+    public String normativas() {
+        return "normativas";
+    }
+
+
+
 
     public void setMe(Usuario me) {
         this.me = me;

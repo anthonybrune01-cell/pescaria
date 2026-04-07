@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input {
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #2c7be5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Perfil</h2>
+
+    <form action="/usuario/atualizar" method="post">
+
+        <input type="hidden" name="id" th:value="${usuario.id}">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" th:value="${usuario.nome}">
+
+        <label>Email:</label>
+        <input type="email" name="email" th:value="${usuario.email}">
+
+        <label>Senha:</label>
+        <input type="password" name="senha" th:value="${usuario.senha}">
+
+        <button type="submit">Salvar</button>
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -15,6 +15,8 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository repository;
 
+
+
     @Transactional
     public Usuario save (Usuario usuario) {
         Usuario existente = repository.findByEmail(usuario.getEmail());
@@ -24,6 +26,9 @@ public class UsuarioService {
 
         return repository.save(usuario);
     }
+
+
+
 
     public List<Usuario> findAll () {
         return repository.findAll();

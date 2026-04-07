@@ -20,9 +20,11 @@ public class UsuarioController {
     UsuarioService service;
 
     @PostMapping
-    public ResponseEntity<Usuario> save (@ModelAttribute Usuario usuario) {
-        Usuario user = service.save(usuario);
-        return ResponseEntity.ok(user);
+    public String save(@ModelAttribute Usuario usuario) {
+
+        service.save(usuario);
+
+        return "redirect:/";
     }
 
     @PostMapping("/login")
